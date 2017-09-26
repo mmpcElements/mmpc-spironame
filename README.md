@@ -1,21 +1,15 @@
-# \<mmpc-spironame\>
+## &lt;mmpc-spironame&gt;
 
-MMPC Element for Drawer Header that carries the photo and name
+`<mmpc-spironame>` is a MMPC Element for Drawer Header that carries the photo and name.
 
-## Install the Polymer-CLI
-
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
-
-## Viewing Your Element
-
+```html
+<mmpc-spironame
+  image-url="https://apps.mitsubishi-motors.com.ph/warranty/images/pictures/ISDMCV.png"
+  name="Mikko De Vera"
+  subtitle="Front End Developer"
+  layout="vertical"
+  >
+  <paper-item event-name="meow">Meow</paper-item>
+  <paper-item event-name="custom">Custom</paper-item>
+</mmpc-spironame>
 ```
-$ polymer serve
-```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
