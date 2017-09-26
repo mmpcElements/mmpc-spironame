@@ -1,0 +1,120 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<link rel="import" href="../neon-animation/web-animations.html">
+
+<link rel="import" href="../paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
+
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<dom-module id="mmpc-spironame">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      iron-image {
+        border-radius: 50%;
+        height: 3em;
+        width: 3em;
+      }
+      .spacer {
+        margin-right: 1em;
+      }
+      #trigger {
+        top: -0.70em;
+      }
+      iron-image[layout=vertical]{
+        -ms-align-self: flex-start;
+        -webkit-align-self: flex-start;
+        align-self: flex-start;
+      }
+      [compact] {
+        display: none;
+      }
+    </style>
+
+  <template is="dom-if" if="[[!compact]]" restamp="true">
+    <div class$="[[layout]] layout">
+      <iron-image layout$="[[layout]]" class="self-center" src="[[imageUrl]]" preload sizing="cover"></iron-image>
+      <div class="spacer"></div>
+      <div class="horizontal layout">
+        <div class="vertical layout self-center">
+          <strong>[[name]]</strong>
+          <span>[[subtitle]]</span>
+        </div>
+        <paper-menu-button class="self-center">
+          <paper-icon-button id="trigger" icon="icons:arrow-drop-down" slot="dropdown-trigger" alt="menu"></paper-icon-button>
+          <paper-listbox slot="dropdown-content">
+            <slot>
+            </slot>
+            <paper-item>Account Setting</paper-item>
+            <paper-item>Log out</paper-item>
+          </paper-listbox>
+        </paper-menu-button>
+      </div>
+
+    </div>
+  </template>
+
+    <template is="dom-if" if="[[compact]]" restamp="true">
+        <paper-menu-button class="self-center">
+          <iron-image layout$="[[layout]]" class="self-center" src="[[imageUrl]]" preload sizing="cover" slot="dropdown-trigger"></iron-image>
+          <paper-icon-button id="trigger" icon="icons:arrow-drop-down"  alt="menu"></paper-icon-button>
+          <paper-listbox slot="dropdown-content" on-iron-select="_menuSelected">
+            <slot>
+            </slot>
+            <paper-item event-name="account-settings">Account Setting</paper-item>
+            <paper-item event-name="logout">Log out</paper-item>
+          </paper-listbox>
+        </paper-menu-button>
+      </template>
+
+  </template>
+
+  <script>
+    /**
+     * `mmpc-spironame`
+     * MMPC Element for Drawer Header that carries the photo and name
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MmpcSpironame extends Polymer.Element {
+      static get is() { return 'mmpc-spironame'; }
+      static get properties() {
+        return {
+          name: {
+            type: String
+          },
+          subtitle: {
+            type: String
+          },
+          imageUrl: {
+            type: String
+          },
+          layout: {
+            type: String,
+            value: 'horizontal'
+          },
+          compact: {
+            type: Boolean,
+            value: false,
+            reflectToAttribute: true
+          }
+        };
+      }
+      _menuSelected(e) {
+        this.dispatchEvent(new CustomEvent(e.detail.item.getAttribute("event-name"), {}));
+      }
+    }
+
+    window.customElements.define(MmpcSpironame.is, MmpcSpironame);
+  </script>
+</dom-module>
