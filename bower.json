@@ -6,7 +6,7 @@
     "mmpc-components"
   ],
   "version": "0.1.0",
-  "license": "MIT*",
+  "license": "Apache-2.0",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "iron-image": "PolymerElements/iron-image#^2.1.2",
