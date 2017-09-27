@@ -77,8 +77,8 @@ Custom property | Description | Default
           <paper-listbox slot="dropdown-content" on-iron-select="_menuSelected">
             <slot>
             </slot>
-            <paper-item>Account Setting</paper-item>
-            <paper-item>Log out</paper-item>
+            <paper-item event-name="account-settings">Account Setting</paper-item>
+            <paper-item event-name="logout">Log out</paper-item>
           </paper-listbox>
         </paper-menu-button>
       </div>
@@ -159,7 +159,7 @@ Custom property | Description | Default
         };
       }
       _menuSelected(e) {
-        this.dispatchEvent(new CustomEvent(e.detail.item.getAttribute("event-name"), {}));
+        this.dispatchEvent(new CustomEvent('menu-selected', {detail: {selected: e.detail.item.getAttribute("event-name")}}));
       }
     }
 
