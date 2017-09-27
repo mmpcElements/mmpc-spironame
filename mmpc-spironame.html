@@ -74,7 +74,7 @@ Custom property | Description | Default
         </div>
         <paper-menu-button class="self-center">
           <paper-icon-button id="trigger" icon="icons:arrow-drop-down" slot="dropdown-trigger" alt="menu"></paper-icon-button>
-          <paper-listbox slot="dropdown-content">
+          <paper-listbox slot="dropdown-content" on-iron-select="_menuSelected">
             <slot>
             </slot>
             <paper-item>Account Setting</paper-item>
