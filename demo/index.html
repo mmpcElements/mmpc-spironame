@@ -10,6 +10,7 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../shadycss/apply-shim.html">
     <link rel="import" href="../mmpc-spironame.html">
 
     <custom-style>
@@ -18,6 +19,7 @@
     </custom-style>
   </head>
   <body>
+
     <div class="vertical-section-container centered">
       <h3>Basic mmpc-spironame demo</h3>
       <demo-snippet>
@@ -88,6 +90,29 @@
       <demo-snippet>
         <template>
           <mmpc-spironame
+            name="Mikko De Vera"
+            subtitle="Front End Developer"
+            >
+          </mmpc-spironame>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Style mmpc-spironame demo</h3>
+      <demo-snippet>
+        <template>
+          <style is="custom-style">
+            #spiro{
+              --spironame-image-width: 5em;
+              --spironame-image-height: 5em;
+              --spironame-name-style: {
+                color: pink;
+              };
+            }
+          </style>
+          <mmpc-spironame
+            id="spiro"
+            image-url="https://apps.mitsubishi-motors.com.ph/warranty/images/pictures/ISDMCV.png"
             name="Mikko De Vera"
             subtitle="Front End Developer"
             >

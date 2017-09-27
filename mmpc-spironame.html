@@ -2,6 +2,8 @@
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
+<link rel="import" href="../shadycss/apply-shim.html">
+
 <link rel="import" href="../neon-animation/web-animations.html">
 
 <link rel="import" href="../paper-menu-button/paper-menu-button.html">
@@ -17,11 +19,13 @@
     <style include="iron-flex iron-flex-alignment">
       :host {
         display: block;
+        --spironame-image-width: 3em;
+        --spironame-image-height: 3em;
       }
       iron-image {
         border-radius: 50%;
-        height: 3em;
-        width: 3em;
+        width: var(--spironame-image-width);
+        height: var(--spironame-image-height);
       }
       .spacer {
         margin-right: 1em;
@@ -37,6 +41,13 @@
       [compact] {
         display: none;
       }
+      .nameClass {
+        font-weight: bold;
+        @apply --spironame-name-style;
+      }
+      .subtitle {
+        @apply --spironame-subtitle-style;
+      }
     </style>
 
   <template is="dom-if" if="[[!compact]]" restamp="true">
@@ -47,8 +58,8 @@
       <div class="spacer"></div>
       <div class="horizontal layout">
         <div class="vertical layout self-center">
-          <strong>[[name]]</strong>
-          <span>[[subtitle]]</span>
+          <span class="nameClass">[[name]]</span>
+          <span class="subtitle">[[subtitle]]</span>
         </div>
         <paper-menu-button class="self-center">
           <paper-icon-button id="trigger" icon="icons:arrow-drop-down" slot="dropdown-trigger" alt="menu"></paper-icon-button>
