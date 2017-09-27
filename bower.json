@@ -2,6 +2,10 @@
   "name": "mmpc-spironame",
   "description": "MMPC Element for Drawer Header that carries the photo and name",
   "main": "mmpc-spironame.html",
+  "keywords": [
+    "mmpc-components"
+  ],
+  "version": "0.1.0",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "iron-image": "PolymerElements/iron-image#^2.1.2",
